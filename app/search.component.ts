@@ -7,9 +7,11 @@ import 'rxjs/add/operator/switchMap';
         <h2>Search</h2>
         <p>keyword: {{ keyword }}</p>
         <ul>
-            <li><a [routerLink]="['/user/searchView', { outlets: { nav: 'obj/1'} }]">nav/1</a></li>
-            <li><a [routerLink]="['./', { outlets: { nav: 'obj/2'} }]">nav/2</a></li>
-            <li><a [routerLink]="['/', { outlets: { nav: 'obj/3', main: null} }]">nav/3</a></li>
+            <li><a [routerLink]="['/user/searchView', { outlets: { nav: 'obj/1'} }]">nav-1</a> // OK, but bad</li>
+            <li><a [routerLink]="[{ outlets: { nav: 'obj/2'} }]">nav-2</a> // NOK</li>
+            <li><a [routerLink]="['./', { outlets: { nav: 'obj/3'} }]">nav-3</a> // NOK</li>
+            <li><a [routerLink]="['../', { outlets: { nav: 'obj/4'} }]">nav-4</a> // NOK</li>
+            <li><a [routerLink]="['/', { outlets: { nav: 'obj/5'} }]">nav-5</a> // NOK</li>
         </ul>
  `
 })

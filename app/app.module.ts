@@ -1,21 +1,23 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule }   from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent }   from './app.component';
+import { SearchViewComponent }   from './search-view.component';
 import { SearchComponent }   from './search.component';
 import { NavComponent }   from './nav.component';
 import { MainComponent }   from './main.component';
-import { SearchViewComponent }   from './search-view.component';
+import { AuthGuard } from "./auth.guard";
 
 @NgModule({
     imports: [
         BrowserModule,
         RouterModule.forRoot([
-            { path: 'user', children: [
+            { path: 'user', canActivate: [AuthGuard], children: [
                 { path: 'searchView', component: SearchViewComponent, children: [
                     { path: 'find/:keyword', component: SearchComponent, outlet: 'search' },
-                    { path: 'obj/:id', component: NavComponent, outlet: 'nav' }
+                    { path: 'obj/:id', component: NavComponent, outlet: 'nav' },
+                    { path: 'obj/:id', component: MainComponent, outlet: 'main' }
                 ] },
 
             ] },
@@ -24,20 +26,6 @@ import { SearchViewComponent }   from './search-view.component';
                 redirectTo: '/user',
                 pathMatch: 'full'
             }
-            
-            /*,
-            { path: 'page', component: PageComponent },
-            { path: 'find/:keyword', component: SearchComponent, outlet: 'search' },
-            { path: 'obj/:id', component: NavComponent, outlet: 'nav' },
-            { path: 'obj/:id', component: MainComponent, outlet: 'main' },
-
-            { path: 'sub', children: [
-                { path: '', component: PageComponent, children: [
-                { path: 'find/:keyword', component: SearchComponent, outlet: 'search' },
-                { path: 'obj/:id', component: NavComponent, outlet: 'nav' },
-                { path: 'obj/:id', component: MainComponent, outlet: 'main' }
-            ]}*/
-
         ])
     ],
 
@@ -47,7 +35,10 @@ import { SearchViewComponent }   from './search-view.component';
         SearchComponent,
         NavComponent,
         MainComponent
+    ],
 
+    providers: [
+        AuthGuard
     ],
 
     bootstrap: [ AppComponent ]

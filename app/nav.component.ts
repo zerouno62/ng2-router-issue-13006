@@ -5,10 +5,14 @@ import 'rxjs/add/operator/switchMap';
 @Component({
     selector: 'nav',
     template: `
-    <h2>Nav</h2>
-    <div>current: {{ currentId }} </div>
-    <a [routerLink]="['/', { outlets: { main: 'obj/1'} }]">Main 1</a>
-    <a [routerLink]="['/', { outlets: { main: 'obj/2'} }]">Main 2</a>   
+        <h2>Nav</h2>
+        <p>currentId: {{ currentId }} </p>
+        <ul>
+          <li><a [routerLink]="['/user/searchView', { outlets: { main: 'obj/1'} }]">main-1</a> // OK, but bad</li>
+          <li><a [routerLink]="['/user/searchView', { outlets: { main: 'obj/2'} }]">main-2</a> // OK, but bad</li>
+        </ul>
+        
+        
      `
 })
 export class NavComponent implements OnInit {

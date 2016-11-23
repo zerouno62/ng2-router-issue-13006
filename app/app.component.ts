@@ -5,10 +5,8 @@ import { Router, ActivatedRoute, Params }   from '@angular/router';
     selector: 'my-app',
     template: `
     <h1>Home</h1>
-    [ <a href="/">Home</a> ]
-    [ <a href="/user/searchView/(search:find/1)">find/1</a> ]
-    [ <a href="/user/searchView/(search:find/2)">find/2</a> ]
-    [ <a href="/user/searchView/(search:find/3)">find/3</a> ]
+    [ <a [routerLink]="['/']">Home</a> ]
+    [ <a [routerLink]="['/user/searchView', { outlets: { 'search': 'find/1'}}]">find-1</a> ]
     <hr/>
     <router-outlet></router-outlet>
    
