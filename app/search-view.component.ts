@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
     template: `
         <h2>Search View</h2>
         <p>
-            Click on 'nav-1' in 'Search' and then on 'main-1' or 'main-2' in Nav. 
-            <br/>This are the only paths that work. 
+            The dialog flow is: Search -> Nav -> Main.
+            <br/>First click on 'nav-1' in 'Search' and then on 'main-1' or 'main-2' in 'Nav'. 
+            <br/>These are the only paths that work. 
             <br/>The other 'nav-*' links are here to discuss the unexpected behavior (see Remarks).
         </p>
         <table>
